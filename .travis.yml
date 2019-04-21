@@ -10,8 +10,9 @@ script:
 
 after_success:
   - docker build -t auaden/multi-client ./client
-  - docker build -t auaden/multi-nginx ./server
+  - docker build -t auaden/multi-nginx ./nginx
   - docker build -t auaden/multi-worker ./worker
+  - docker build -t auaden/multi-server ./server
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push auaden/multi-client
   - docker push auaden/multi-nginx
